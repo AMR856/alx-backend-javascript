@@ -9,11 +9,11 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     [
     {
       status: results[0].status,
-      value: results[0].value,
+      value: o.status === 'fulfilled' ? o.value : String(o.reason),
     },
     {
       status: results[1].status,
-      value: results[1].reason,
+      value: o.status === 'fulfilled' ? o.value : String(o.reason),
     }];
   });
 }

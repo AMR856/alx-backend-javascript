@@ -6,7 +6,15 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   let secondFunctionPromise = uploadPhoto(fileName);
   Promise.allSettled([firstFunctionPromise, secondFunctionPromise])
   .then((results) => {
-    return results;
+    console.log([
+    {
+      status: results[0].status,
+      value: results[0].value,
+    },
+    {
+      status: results[1].status,
+      value: results[1].reason,
+    }]);
   });
 }
 

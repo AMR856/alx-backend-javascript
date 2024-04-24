@@ -4,7 +4,10 @@ import uploadPhoto from "./5-photo-reject";
 export default function handleProfileSignup(firstName, lastName, fileName) {
   let firstFunctionPromise = signUpUser(fileName, lastName);
   let secondFunctionPromise = uploadPhoto(fileName);
-  Promise.all([firstFunctionPromise, secondFunctionPromise])
+  Promise.allSettled([firstFunctionPromise, secondFunctionPromise])
+  .then((results) => {
+    return results;
+  });
 }
 
 // [
@@ -14,8 +17,10 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
 //   },
 //   ...
 // ]
-// Import signUpUser from 4-user-promise.js and uploadPhoto 
-// from 5-photo-reject.js.
+
+// Promise.allSettled(promises).then((results) =>
+//   results.forEach((result) => console.log(result.status)),
+// );
 
 // Write and export a function named handleProfileSignup. It should 
 // accept three arguments firstName (string), lastName (string), and 

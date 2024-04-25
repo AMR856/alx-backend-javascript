@@ -10,7 +10,7 @@ export default class Airport {
 
   set name(value) {
     if (typeof value !== 'string') {
-      throw new TypeError("Name must be a string");
+      throw new TypeError('Name must be a string');
     }
     this._name = value;
   }
@@ -21,10 +21,11 @@ export default class Airport {
 
   set code(value) {
     if (typeof value !== 'string') {
-      throw new TypeError("Code must be a string");
+      throw new TypeError('Code must be a string');
     }
     this._code = value;
   }
+
   toString() {
     return `[${typeof this} ${this._code}]`;
   }

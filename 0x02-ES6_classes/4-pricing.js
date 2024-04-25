@@ -29,7 +29,7 @@ export default class Pricing {
   }
 
   displayFullPrice() {
-    return `${this._amount} ${this._Currency._name} (${this._Currency._code})`;
+    return `${this.amount} ${this.Currency.name} (${this.Currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
@@ -37,7 +37,7 @@ export default class Pricing {
       throw new TypeError('Amount must be a number');
     }
     if (typeof conversionRate !== 'number') {
-      throw new TypeError('ConversionRate must be a number');
+      throw new TypeError('conversionRate must be a number');
     }
     return amount * conversionRate;
   }

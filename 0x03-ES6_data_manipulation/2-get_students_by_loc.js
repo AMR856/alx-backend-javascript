@@ -1,14 +1,15 @@
-export default function getListStudentIds(myArray) {
-  let myIDArray = [];
+export default function getStudentsByLocation(myArray, city) {
+  let mylocationArray = [];
   if (typeof myArray === 'object' || myArray === undefined) {
     for (const obj of myArray) {
       if (typeof Object.values(obj)[0] !== 'number' && typeof Object.values(obj)[1] !== 'string' && typeof Object.values(obj)[2] !== 'string') {
-        return myIDArray;
+        return mylocationArray;
       }
     }
   } else {
-    return myIDArray;
+    return mylocationArray;
   }
-  myIDArray = myArray.map((val) => val.id);
-  return myIDArray;
+
+  mylocationArray = myArray.filter((obj) => obj.location === city);
+  return mylocationArray;
 }

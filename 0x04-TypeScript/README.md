@@ -1,0 +1,1 @@
+## Tyrna learn TypeScript

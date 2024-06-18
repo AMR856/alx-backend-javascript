@@ -1,3 +1,5 @@
-const displayMessage = (arugment) => process.stdout.write(arugment + '\n');
+const displayMessage = (msg) => {
+  console.log(msg);
+};
 
 module.exports = displayMessage;

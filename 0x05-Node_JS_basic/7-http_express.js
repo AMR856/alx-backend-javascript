@@ -60,7 +60,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
 app.get('/', (_, response) => {
   const responseText = 'Hello Holberton School!';
   response.send(responseText);
-})
+});
 
 app.get('/students', (_, response) => {
   const responseParts = ['This is the list of our students'];
@@ -84,4 +84,6 @@ app.get('/students', (_, response) => {
 })
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
+
+module.exports = app;

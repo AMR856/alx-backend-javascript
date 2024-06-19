@@ -1,6 +1,6 @@
 const http = require('http');
-PORT = 1245;
 
+const PORT = 1245;
 
 const app = http.createServer((_, response) => {
   const responseText = 'Hello Holberton School!';

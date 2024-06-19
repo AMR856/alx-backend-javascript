@@ -1,5 +1,6 @@
 const http = require('http');
-const fs = require('fs')
+const fs = require('fs');
+
 const PORT = 1245;
 const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
 
@@ -56,19 +57,16 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
   }
 });
 
-
 const app = http.createServer((request, response) => {
-  switch(request.url) {
-    case '/':
-      const responseText = 'Hello Holberton School!';
-      response.setHeader('Content-Type', 'text/plain');
-      response.setHeader('Content-Length', responseText.length);
-      response.statusCode = 200;
-      response.write(Buffer.from(responseText));
-      break;
-    case '/students':
-      const responseParts = ['This is the list of our students'];
-      countStudents(DB_FILE)
+  if (request.url === '/') {
+    const responseText = 'Hello Holberton School!';
+    response.setHeader('Content-Type', 'text/plain');
+    response.setHeader('Content-Length', responseText.length);
+    response.statusCode = 200;
+    response.write(Buffer.from(responseText));
+  } else if (request.url === '/students') {
+    const responseParts = ['This is the list of our students'];
+    countStudents(DB_FILE)
       .then((report) => {
         responseParts.push(report);
         const responseText = responseParts.join('\n');
@@ -86,7 +84,7 @@ const app = http.createServer((request, response) => {
         response.statusCode = 200;
         response.write(Buffer.from(responseText));
       });
-  };
+  }
 }).listen(PORT);
 
 module.exports = app;

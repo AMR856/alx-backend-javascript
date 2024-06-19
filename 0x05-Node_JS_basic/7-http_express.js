@@ -1,7 +1,9 @@
 const express = require('express');
+
 const app = express();
 const port = 1245;
 const fs = require('fs');
+
 const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
 
 const countStudents = (dataPath) => new Promise((resolve, reject) => {
@@ -65,25 +67,25 @@ app.get('/', (_, response) => {
 app.get('/students', (_, response) => {
   const responseParts = ['This is the list of our students'];
   countStudents(DB_FILE)
-  .then((report) => {
-    responseParts.push(report);
-    const responseText = responseParts.join('\n');
-    response.setHeader('Content-Type', 'text/plain');
-    response.setHeader('Content-Length', responseText.length);
-    response.statusCode = 200;
-    response.send(responseText);
-  })
-  .catch((err) => {
-    responseParts.push(err instanceof Error ? err.message : err.toString());
-    const responseText = responseParts.join('\n');
-    response.setHeader('Content-Type', 'text/plain');
-    response.setHeader('Content-Length', responseText.length);
-    response.statusCode = 200;
-    response.send(responseText);
-  });
-})
+    .then((report) => {
+      responseParts.push(report);
+      const responseText = responseParts.join('\n');
+      response.setHeader('Content-Type', 'text/plain');
+      response.setHeader('Content-Length', responseText.length);
+      response.statusCode = 200;
+      response.send(responseText);
+    })
+    .catch((err) => {
+      responseParts.push(err instanceof Error ? err.message : err.toString());
+      const responseText = responseParts.join('\n');
+      response.setHeader('Content-Type', 'text/plain');
+      response.setHeader('Content-Length', responseText.length);
+      response.statusCode = 200;
+      response.send(responseText);
+    });
+});
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
 });
 
 module.exports = app;

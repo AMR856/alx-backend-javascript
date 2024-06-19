@@ -59,10 +59,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
 
 app.get('/', (_, response) => {
   const responseText = 'Hello Holberton School!';
-  response.setHeader('Content-Type', 'text/plain');
-  response.setHeader('Content-Length', responseText.length);
-  response.statusCode = 200;
-  response.write(Buffer.from(responseText));
+  response.send(responseText);
 })
 
 app.get('/students', (_, response) => {
@@ -71,11 +68,10 @@ app.get('/students', (_, response) => {
   .then((report) => {
     responseParts.push(report);
     const responseText = responseParts.join('\n');
-    console.log(responseText);
     response.setHeader('Content-Type', 'text/plain');
     response.setHeader('Content-Length', responseText.length);
     response.statusCode = 200;
-    response.write(Buffer.from(responseText));
+    response.send(responseText);
   })
   .catch((err) => {
     responseParts.push(err instanceof Error ? err.message : err.toString());
@@ -83,7 +79,7 @@ app.get('/students', (_, response) => {
     response.setHeader('Content-Type', 'text/plain');
     response.setHeader('Content-Length', responseText.length);
     response.statusCode = 200;
-    response.write(Buffer.from(responseText));
+    response.send(responseText);
   });
 })
 app.listen(port, () => {

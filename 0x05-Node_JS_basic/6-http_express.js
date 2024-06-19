@@ -4,10 +4,7 @@ const port = 1245
 
 app.get('/', (_, response) => {
   const responseText = 'Hello Holberton School!';
-  response.setHeader('Content-Type', 'text/plain');
-  response.setHeader('Content-Length', responseText.length);
-  response.statusCode = 200;
-  response.write(Buffer.from(responseText));
+  response.send(responseText);
 })
 
 app.listen(port, () => {

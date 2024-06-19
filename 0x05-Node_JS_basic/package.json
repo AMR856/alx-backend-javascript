@@ -1,5 +1,5 @@
 {
-  "name": "node_js_basics",
+  "name": "mkdrip",
   "version": "1.0.0",
   "description": "A simple project for learning the basics of Node.js for server-side apps.",
   "main": "index.js",
@@ -7,10 +7,10 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint",
+    "lint": "eslint",
     "check-lint": "lint [0-9]*.js",
-    "lint-all": "./node_modules/.bin/eslint [0-9]*.js",
-    "lint-fix-all": "./node_modules/.bin/eslint --fix [0-9]*.js",
+    "lint-all": "eslint [0-9]*.js",
+    "lint-fix-all": "eslint --fix [0-9]*.js",
     "test": "./node_modules/mocha/bin/mocha --require babel-register --exit",
     "dev": "nodemon --exec babel-node --presets babel-preset-env ./full_server/server.js ./database.csv"
   },
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/B3zaleel/alx-backend-javascript"
+    "url": "git+https://github.com/B3zaleel/alx-backend-javascript.git"
   },
   "bugs": {
     "url": "https://github.com/B3zaleel/alx-backend-javascript/tree/main/0x05-Node_JS_basic"

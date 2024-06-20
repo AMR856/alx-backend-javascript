@@ -21,4 +21,12 @@ describe('Add function test', function() {
   it('Check if one is zero', function(){
     assert.equal(calculateNumber(0, 2), 2);
   });
+
+  it('Check if one is negative', function(){
+    assert.equal(calculateNumber(-1, 3), 2);
+  });
+
+  it('Check if both are negative', function() {
+    assert.equal(calculateNumber(-2, -3), -5);
+  })
 });

@@ -1,5 +1,12 @@
 import fs from 'fs';
 
+/**
+ * Reads the data of students in a CSV data file.
+ * @param {String} dataPath The path to the CSV data file.
+ * @returns {Promise<{
+ *   String: {firstname: String, lastname: String, age: number}[]
+ * }>}
+ */
 const readDatabase = (dataPath) => new Promise((resolve, reject) => {
   if (!dataPath) {
     reject(new Error('Cannot load the database'));
@@ -18,6 +25,7 @@ const readDatabase = (dataPath) => new Promise((resolve, reject) => {
         const dbFieldNames = fileLines[0].split(',');
         const studentPropNames = dbFieldNames
           .slice(0, dbFieldNames.length - 1);
+
         for (const line of fileLines.slice(1)) {
           const studentRecord = line.split(',');
           const studentPropValues = studentRecord
